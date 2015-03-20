@@ -1,7 +1,7 @@
-package jenkins.plugins.nodejs.tools.pathresolvers;
+package jenkins.plugins.iojs.tools.pathresolvers;
 
-import jenkins.plugins.nodejs.tools.InstallerPathResolver;
-import jenkins.plugins.nodejs.tools.NodeJSInstaller;
+import jenkins.plugins.iojs.tools.InstallerPathResolver;
+import jenkins.plugins.iojs.tools.IojsInstaller;
 
 /**
  * @author fcamblor
@@ -9,7 +9,7 @@ import jenkins.plugins.nodejs.tools.NodeJSInstaller;
 public class LatestInstallerPathResolver implements InstallerPathResolver {
     private static final String EXTENSION = ".tar.gz";
 
-    public String resolvePathFor(String version, IojsInstaller.Platform platform, NodeJSInstaller.CPU cpu) {
+    public String resolvePathFor(String version, IojsInstaller.Platform platform, IojsInstaller.CPU cpu) {
         if(platform== IojsInstaller.Platform.MAC){
             if(cpu == IojsInstaller.CPU.amd64){
                 return "iojs-v"+version+"-darwin-x64"+EXTENSION;
@@ -23,7 +23,7 @@ public class LatestInstallerPathResolver implements InstallerPathResolver {
                 return "iojs-v"+version+"-linux-x86"+EXTENSION;
             }
         // At the moment, windows MSI installer are not handled !
-        //} else if (platform == NodeJSInstaller.Platform.WINDOWS){
+        //} else if (platform == IojsInstaller.Platform.WINDOWS){
         }
         throw new IllegalArgumentException("Unresolvable io.js installer for version="+version+", platform="+platform.name()+", cpu="+cpu.name());
     }

@@ -337,7 +337,7 @@ public class IojsInstaller extends DownloadFromUrlInstaller {
     }
 
     @Extension
-    public static final class DescriptorImpl extends DownloadFromUrlInstaller.DescriptorImpl<NodeJSInstaller> {
+    public static final class DescriptorImpl extends DownloadFromUrlInstaller.DescriptorImpl<IojsInstaller> {
         public String getDisplayName() {
             return Messages.IojsInstaller_DescriptorImpl_displayName();
         }
@@ -353,7 +353,7 @@ public class IojsInstaller extends DownloadFromUrlInstaller {
                     });
             TreeSet<Installable> sortedInstallables = new TreeSet<Installable>(new Comparator<Installable>(){
                 public int compare(Installable o1, Installable o2) {
-                    return NodeJSVersion.compare(o1.id, o2.id)*-1;
+                    return IojsVersion.compare(o1.id, o2.id)*-1;
                 }
             });
             sortedInstallables.addAll(filteredInstallables);
@@ -368,7 +368,7 @@ public class IojsInstaller extends DownloadFromUrlInstaller {
 
         @Override
         public boolean isApplicable(Class<? extends ToolInstallation> toolType) {
-            return toolType == NodeJSInstallation.class;
+            return toolType == IojsInstallation.class;
         }
     }
 

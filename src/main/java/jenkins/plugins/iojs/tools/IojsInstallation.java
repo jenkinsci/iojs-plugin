@@ -18,13 +18,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author fcamblor
  */
 public class IojsInstallation extends ToolInstallation
         implements EnvironmentSpecific<IojsInstallation>, NodeSpecific<IojsInstallation>, Serializable {
 
-    private static final String WINDOWS_NODEJS_COMMAND = "iojs.exe";
-    private static final String UNIX_NODEJS_COMMAND = "iojs";
+    private static final String WINDOWS_IOJS_COMMAND = "iojs.exe";
+    private static final String UNIX_IOJS_COMMAND = "iojs";
 
     private final String iojsHome;
 
@@ -100,6 +99,5 @@ public class IojsInstallation extends ToolInstallation
         public void setInstallations(IojsInstallation... installations) {
             IojsPlugin.instance().setInstallations(installations);
         }
-
     }
 }

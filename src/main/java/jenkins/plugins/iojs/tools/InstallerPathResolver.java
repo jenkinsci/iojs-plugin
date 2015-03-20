@@ -1,10 +1,9 @@
-package jenkins.plugins.nodejs.tools;
+package jenkins.plugins.iojs.tools;
 
-import jenkins.plugins.nodejs.tools.pathresolvers.LatestInstallerPathResolver;
+import jenkins.plugins.iojs.tools.pathresolvers.LatestInstallerPathResolver;
 import hudson.tools.DownloadFromUrlInstaller;
 
 /**
- * @author fcamblor
  */
 public interface InstallerPathResolver {
     String resolvePathFor(String version, IojsInstaller.Platform platform,
@@ -21,8 +20,7 @@ public interface InstallerPathResolver {
         }
 
         public static boolean isVersionBlacklisted(String version){
-            IojsVersion iojsVersion = new IojsVersion(version);
-            return IojsVersion;
+            return false;
         }
     }
 }

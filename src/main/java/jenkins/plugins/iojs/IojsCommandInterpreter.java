@@ -25,7 +25,7 @@ public class IojsCommandInterpreter extends Builder {
     private String iojsInstallationName;
 
     /**
-     * Constructs a {@link NodeJsCommandInterpreter} with specified command.
+     * Constructs a {@link IojsCommandInterpreter} with specified command.
      * @param command
      *            theio.jsscript
      */

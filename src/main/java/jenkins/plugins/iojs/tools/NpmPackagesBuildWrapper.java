@@ -7,7 +7,7 @@ import hudson.model.AbstractProject;
 import hudson.model.BuildListener;
 import hudson.model.Computer;
 import hudson.model.Run;
-import jenkins.plugins.nodejs.NodeJSPlugin;
+import jenkins.plugins.iojs.IojsPlugin;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -62,7 +62,7 @@ public class NpmPackagesBuildWrapper extends BuildWrapper {
                 EnvVars vars = toEnvVars(starterEnvs);
 
                 IojsInstallation iojsInstallation =
-                    iojsPlugin.instance().findInstallationByName(iojsInstallationName);
+                    IojsPlugin.instance().findInstallationByName(iojsInstallationName);
 
                 try {
                     iojsInstallation = iojsInstallation.forNode(build.getBuiltOn(), listener);
@@ -80,7 +80,7 @@ public class NpmPackagesBuildWrapper extends BuildWrapper {
 
                 // HACK: Avoids issue with invalid separators in EnvVars::override in case of different master/slave
 
-                String overriddenPaths = NodeJSInstaller.binFolderOf(nodeJSInstallation, build.getBuiltOn())
+                String overriddenPaths = IojsInstaller.binFolderOf(iojsInstallation, build.getBuiltOn())
                         + pathSeparator
                         + vars.get("PATH");
                 vars.override("PATH", overriddenPaths);

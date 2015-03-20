@@ -1,4 +1,4 @@
-package jenkins.plugins.nodejs.tools;
+package jenkins.plugins.iojs.tools;
 
 /**
  * @author fcamblor

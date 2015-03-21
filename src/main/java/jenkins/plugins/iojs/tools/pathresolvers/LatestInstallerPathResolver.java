@@ -18,15 +18,15 @@ public class LatestInstallerPathResolver implements InstallerPathResolver {
         String r = null;
         if(platform== IojsInstaller.Platform.MAC){
             if(cpu == IojsInstaller.CPU.amd64){
-                r = "iojs-v"+version+"-darwin-x64"+EXTENSION;
+                r = "iojs-v"+version+"-darwin-x64";
             } else if(cpu == IojsInstaller.CPU.i386){
-                r = "iojs-v"+version+"-darwin-x86"+EXTENSION;
+                r = "iojs-v"+version+"-darwin-x86";
             }
         } else if(platform == IojsInstaller.Platform.LINUX){
             if(cpu == IojsInstaller.CPU.amd64){
-                r = "iojs-v"+version+"-linux-x64"+EXTENSION;
+                r = "iojs-v"+version+"-linux-x64";
             } else if(cpu == IojsInstaller.CPU.i386){
-                r = "iojs-v"+version+"-linux-x86"+EXTENSION;
+                r = "iojs-v"+version+"-linux-x86";
             }
         // At the moment, windows MSI installer are not handled !
         //} else if (platform == IojsInstaller.Platform.WINDOWS){

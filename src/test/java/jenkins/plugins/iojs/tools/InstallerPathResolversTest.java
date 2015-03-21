@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,18 +46,12 @@ public class InstallerPathResolversTest {
         for(int i=0; i<installables.size(); i++){
             DownloadFromUrlInstaller.Installable installable = (DownloadFromUrlInstaller.Installable)installables.getJSONObject(i).toBean(DownloadFromUrlInstaller.Installable.class);
 
-            // Not testing pre-0.8.6 version because at the moment, installer structure is not handled
-            if(false){
-                continue;
-            }
-
             for(IojsInstaller.Platform platform :TESTABLE_PLATFORMS){
                 for(IojsInstaller.CPU cpu :TESTABLE_CPUS){
                     testPossibleParams.add(new Object[]{ installable, platform, cpu, String.format("version=%s,cpu=%s,platform=%s",installable.id,cpu.name(),platform.name()) });
                 }
             }
         }
-
         return testPossibleParams;
     }
 
@@ -72,7 +66,7 @@ public class InstallerPathResolversTest {
             urlConnection.setConnectTimeout(2000);
             urlConnection.connect();
             int code = urlConnection.getResponseCode();
-            assertThat(code >= 200 && code < 300, is(true));
+            assertThat(code >= 200 && code < 400, is(true));
         } finally {
             if(urlConnection != null){
                 urlConnection.disconnect();

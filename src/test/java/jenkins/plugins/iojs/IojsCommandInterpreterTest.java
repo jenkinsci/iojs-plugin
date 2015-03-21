@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.Collections;
 
 import static de.regnis.q.sequence.core.QSequenceAssert.assertTrue;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
 
 public class IojsCommandInterpreterTest {

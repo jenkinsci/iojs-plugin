@@ -47,7 +47,7 @@ public class InstallerPathResolversTest {
             DownloadFromUrlInstaller.Installable installable = (DownloadFromUrlInstaller.Installable)installables.getJSONObject(i).toBean(DownloadFromUrlInstaller.Installable.class);
 
             // Not testing pre-0.8.6 version because at the moment, installer structure is not handled
-            if(InstallerPathResolver.Factory.isVersionBlacklisted(installable.id)){
+            if(false){
                 continue;
             }
 

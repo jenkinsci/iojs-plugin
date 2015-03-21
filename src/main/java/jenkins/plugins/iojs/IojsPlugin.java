@@ -39,7 +39,7 @@ public class IojsPlugin extends Plugin {
                 return iojsInstallation;
             }
         }
-        throw new IllegalArgumentException("io.js installation not found : "+name);
+        throw new IllegalArgumentException("io.js installation not found: "+name);
     }
 
     public void setInstallations(IojsInstallation[] installations) {

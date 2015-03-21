@@ -1,25 +1,34 @@
 package jenkins.plugins.iojs;
 
-import hudson.*;
-import hudson.model.*;
-import hudson.model.Messages;
-import jenkins.plugins.iojs.tools.IojsInstallation;
-import hudson.tasks.*;
+import hudson.EnvVars;
+import hudson.Extension;
+import hudson.FilePath;
+import hudson.Launcher;
+import hudson.Util;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
+import hudson.model.Descriptor;
+import hudson.model.Node;
+import hudson.model.TaskListener;
+import hudson.tasks.Builder;
 import hudson.util.ArgumentListBuilder;
+import jenkins.plugins.iojs.tools.IojsInstallation;
 import net.sf.json.JSONObject;
-
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * This class executes a JavaScript file using node. The file should contain
  * io.js script specified in the job configuration.
  */
 public class IojsCommandInterpreter extends Builder {
+
+    private static final Logger LOGGER = Logger.getLogger(IojsCommandInterpreter.class.getName());
 
     private String command;
     private String iojsInstallationName;
@@ -53,6 +62,7 @@ public class IojsCommandInterpreter extends Builder {
         FilePath script=null;
         try {
             try {
+                LOGGER.fine("Creating io.js script in " + ws.getName());
                 script = createScriptFile(ws);
             } catch (IOException e) {
                 Util.displayIOException(e, listener);
@@ -101,10 +111,10 @@ public class IojsCommandInterpreter extends Builder {
     }
 
     /**
-     * Creates a script file in a temporary name in the specified directory.
+     * Creates a script file in the specified directory (not in tmp dir).
      */
     public FilePath createScriptFile(@Nonnull FilePath dir) throws IOException, InterruptedException {
-        return dir.createTextTempFile("hudson", ".js", this.command, false);
+        return dir.createTextTempFile("io.js", ".js", this.command, true);
     }
 
     public String getCommand() {

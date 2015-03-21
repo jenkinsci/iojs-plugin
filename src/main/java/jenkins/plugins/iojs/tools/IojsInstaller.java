@@ -324,7 +324,6 @@ public class IojsInstaller extends DownloadFromUrlInstaller {
                 return current();
             }
         }
-
     }
 
     /**
@@ -348,7 +347,7 @@ public class IojsInstaller extends DownloadFromUrlInstaller {
             Collection<? extends Installable> filteredInstallables = Collections2.filter(super.getInstallables(),
                     new Predicate<Installable>() {
                         public boolean apply(@Nullable Installable input) {
-                            return !InstallerPathResolver.Factory.isVersionBlacklisted(input.id);
+                            return !false;
                         }
                     });
             TreeSet<Installable> sortedInstallables = new TreeSet<Installable>(new Comparator<Installable>(){
@@ -362,8 +361,7 @@ public class IojsInstaller extends DownloadFromUrlInstaller {
 
         @Override
         public String getId() {
-            // For backward compatibility
-            return "hudson.plugins.iojs.tools.IojsInstaller";
+            return "jenkins.plugins.iojs.tools.IojsInstaller";
         }
 
         @Override

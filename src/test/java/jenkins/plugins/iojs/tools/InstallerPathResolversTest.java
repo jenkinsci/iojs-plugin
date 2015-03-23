@@ -41,8 +41,8 @@ public class InstallerPathResolversTest {
     public static Collection<Object[]> data() throws IOException {
         Collection<Object[]> testPossibleParams = new ArrayList<Object[]>();
 
-        String installablesJSONStr = Resources.toString(Resources.getResource("updates/jenkins.plugins.iojs.tools.IojsInstaller.json"), Charsets.UTF_8);
-        JSONArray installables = JSONObject.fromObject(installablesJSONStr).getJSONArray("list");
+        String installablesJSONStr = Resources.toString(Resources.getResource("updates/hudson.plugins.iojs.tools.IojsInstaller.json"), Charsets.UTF_8);
+        JSONArray installables = JSONObject.fromObject(installablesJSONStr).getJSONArray("releases");
         for(int i=0; i<installables.size(); i++){
             DownloadFromUrlInstaller.Installable installable = (DownloadFromUrlInstaller.Installable)installables.getJSONObject(i).toBean(DownloadFromUrlInstaller.Installable.class);
 
